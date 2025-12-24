@@ -1,0 +1,81 @@
+.card {
+  /* ...existing code... */
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .row.g-3.justify-content-center {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    display: flex;
+    gap: 1rem;
+  }
+  .row.g-3.justify-content-center > .col-6 {
+    min-width: 60vw;
+    flex: 0 0 auto;
+  }
+  .card {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+  }
+  .section {
+    padding: 32px 0 16px 0;
+  }
+  h1, h2, h3, h4, h5 {
+    font-size: 1.2em;
+  }
+}
+body {
+  background: #000;
+  color: #d4af37;
+  font-family: 'Poppins', sans-serif;
+}
+
+.gold-text {
+  color: #d4af37;
+}
+
+.gold-btn {
+  background: linear-gradient(45deg, #d4af37, #b8962e);
+  color: black;
+  border: none;
+  padding: 10px 22px;
+}
+
+.gold-btn:hover {
+  background: #b8962e;
+}
+
+.section {
+  padding: 80px 0;
+  /* Removed background image from .section */
+}
+.hero-bg {
+  background: url('/backgroundskin.jfif') no-repeat center center;
+  background-size: cover;
+  background-position: center center;
+  image-rendering: auto;
+  min-height: 400px;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-bg > * {
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  background-color: #111;
+  border: 1px solid #d4af37;
+  color: #fff;
+}
+
+a {
+  color: #d4af37;
+  text-decoration: none;
+}
