@@ -1,8 +1,8 @@
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Routine from "../components/Routine";
-import Products from "../components/Products";
-import Footer from "../components/Footer";
+import Navbar from "../src/components/Navbar";
+import Hero from "../src/components/Hero";
+import Routine from "../src/components/Routine";
+import Products from "../src/components/Products";
+import Footer from "../src/components/Footer";
 
 export default function Home() {
   return (
