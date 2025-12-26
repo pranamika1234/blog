@@ -311,7 +311,19 @@ p {
 
 @media (max-width: 768px) {
   .main-navbar {
-    padding: 0 18px;
+    padding: 0 16px;
+    max-width: 100%;
+  }
+  .main-navbar__brand {
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+  .main-navbar__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
   }
   .hero-bg h1 {
     font-size: clamp(1.8rem, 8vw, 2.6rem);
@@ -334,11 +346,18 @@ p {
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0 1rem 0.75rem;
+    margin: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
   .row.g-3.justify-content-center > .col-6 {
-    min-width: 68vw;
+    min-width: 70vw;
     flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+  .row.g-3.justify-content-center > .col-6:first-child {
+    margin-left: 0;
   }
   h1,
   h2,
