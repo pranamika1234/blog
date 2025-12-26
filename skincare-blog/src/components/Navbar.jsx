@@ -27,158 +27,130 @@ export default function Navbar() {
         zIndex: 5000,
         width: "100vw",
         minHeight: "64px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-        background: "#fff",
-        borderBottom: "1px solid #eee",
+        background: "#17b7e7",
+        borderBottom: "none",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
         padding: "0 1rem",
       }}
     >
-      <div
+      <Link
+        className="navbar-brand gold-text"
+        href="/"
         style={{
-          display: "flex",
-          alignItems: "center",
-          width: "100%",
-          justifyContent: "center",
-          position: "relative",
+          fontWeight: "bold",
+          fontSize: "1.2em",
+          letterSpacing: "1px",
+          margin: 0,
+          padding: 0,
+          color: "#fff",
         }}
       >
-        {isMobile && (
-          <button
-            className="navbar-toggle"
-            onClick={() => setShowMenu((v) => !v)}
-            aria-label="Toggle navigation"
-            style={{
-              position: "absolute",
-              left: 0,
-              background: "none",
-              border: "none",
-              color: "#d4af37",
-              fontSize: "2em",
-              zIndex: 5100,
-            }}
-          >
-            &#9776;
-          </button>
-        )}
-        <Link
-          className="navbar-brand gold-text"
-          href="/"
+        GOLD SKIN BEAUTY
+      </Link>
+      {isMobile && (
+        <button
+          className="navbar-toggle"
+          onClick={() => setShowMenu(true)}
+          aria-label="Open menu"
           style={{
-            fontWeight: "bold",
-            fontSize: "1.2em",
-            letterSpacing: "1px",
-            margin: 0,
-            padding: 0,
-            textAlign: "center",
-            color: "#222",
+            background: "none",
+            border: "none",
+            color: "#fff",
+            fontSize: "2em",
           }}
         >
-          GOLD SKIN BEAUTY
-        </Link>
-        {isMobile && (
-          <button
-            className="navbar-toggle"
-            aria-label="Search"
-            style={{
-              position: "absolute",
-              right: 0,
-              background: "none",
-              border: "none",
-              color: "#d4af37",
-              fontSize: "1.7em",
-              zIndex: 5100,
-            }}
-          >
-            <span role="img" aria-label="search">
-              🔍
-            </span>
-          </button>
-        )}
-      </div>
+          &#9776;
+        </button>
+      )}
       {isMobile && showMenu && (
-        <ul
-          className="navbar-nav show"
+        <div
+          className="mobile-menu"
           style={{
             position: "fixed",
-            top: "64px",
+            top: 0,
             left: 0,
-            right: 0,
-            background: "#fff",
-            zIndex: 5001,
-            boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-            padding: "1.5rem 0 1rem 0",
-            borderTop: "1px solid #eee",
             width: "100vw",
-            height: "calc(100vh - 64px)",
-            overflowY: "auto",
-            textAlign: "center",
-          }}
-        >
-          <li className="nav-item">
-            <Link className="nav-link gold-text" href="/">
-              Skincare Routine
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link gold-text" href="/ProductsPage">
-              Beauty Products
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link gold-text" href="/Blog">
-              Blog
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link gold-text" href="/About">
-              About
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link gold-text" href="/Contact">
-              Contact
-            </Link>
-          </li>
-        </ul>
-      )}
-      {!isMobile && (
-        <ul
-          className="navbar-nav ms-auto"
-          style={{
+            height: "100vh",
+            background: "#17b7e7",
+            zIndex: 6000,
             display: "flex",
-            flexDirection: "row",
-            marginLeft: "auto",
+            flexDirection: "column",
+            padding: "2rem 0 0 0",
           }}
         >
-          <li className="nav-item">
-            <Link className="nav-link gold-text" href="/">
-              Skincare Routine
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link gold-text" href="/ProductsPage">
-              Beauty Products
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link gold-text" href="/Blog">
-              Blog
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link gold-text" href="/About">
-              About
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link gold-text" href="/Contact">
-              Contact
-            </Link>
-          </li>
-        </ul>
+          <button
+            onClick={() => setShowMenu(false)}
+            aria-label="Close menu"
+            style={{
+              position: "absolute",
+              top: 24,
+              right: 24,
+              background: "none",
+              border: "none",
+              color: "#fff",
+              fontSize: "2.5em",
+            }}
+          >
+            &times;
+          </button>
+          <ul
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: "4rem 0 0 2rem",
+              flex: 1,
+            }}
+          >
+            <li style={{ marginBottom: "2rem", fontSize: "1.3em" }}>
+              <Link
+                href="/"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                Home
+              </Link>
+            </li>
+            <li style={{ marginBottom: "2rem", fontSize: "1.3em" }}>
+              <Link
+                href="/Blog"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                Blog Tutorial
+              </Link>
+            </li>
+            <li style={{ marginBottom: "2rem", fontSize: "1.3em" }}>
+              <Link
+                href="/About"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                About Me
+              </Link>
+            </li>
+            <li style={{ marginBottom: "2rem", fontSize: "1.3em" }}>
+              <Link
+                href="/Contact"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                Contact Me
+              </Link>
+            </li>
+          </ul>
+          <div style={{ padding: "0 2rem 2rem 2rem" }}>
+            <input
+              type="text"
+              placeholder="Search"
+              style={{
+                width: "100%",
+                padding: "0.75rem 1rem",
+                borderRadius: "2rem",
+                border: "none",
+                fontSize: "1.2em",
+                outline: "none",
+              }}
+            />
+          </div>
+        </div>
       )}
     </nav>
   );
