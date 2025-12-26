@@ -13,7 +13,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar navbar-dark bg-black navbar-expand-lg px-4" style={{ position: "relative" }}>
+    <nav className="navbar navbar-dark bg-black navbar-expand-lg px-4">
       <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
         <Link className="navbar-brand gold-text" href="/">
           GOLD SKIN BEAUTY
@@ -30,22 +30,9 @@ export default function Navbar() {
         )}
       </div>
       <ul
-        className={`navbar-nav ms-auto${isMobile ? (showMenu ? " show" : "") : ""}`}
-        style={
-          isMobile
-            ? {
-                position: "absolute",
-                top: "100%",
-                left: 0,
-                right: 0,
-                background: "#000",
-                zIndex: 1000,
-                boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                display: showMenu ? "flex" : "none",
-                flexDirection: "column",
-              }
-            : { display: "flex", flexDirection: "row", marginLeft: "auto" }
-        }
+        className={`navbar-nav ms-auto${
+          isMobile && showMenu ? " show" : ""
+        }`}
       >
         <li className="nav-item">
           <Link className="nav-link gold-text" href="/">
