@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const navRef = useRef();
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 600);
@@ -11,6 +12,12 @@ export default function Navbar() {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  useEffect(() => {
+    if (showMenu && navRef.current) {
+      navRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [showMenu]);
 
   return (
     <nav className="navbar navbar-dark bg-black navbar-expand-lg px-4" style={{ position: "relative" }}>
@@ -26,7 +33,23 @@ export default function Navbar() {
           &#9776;
         </button>
       )}
-      <ul className={`navbar-nav ms-auto${isMobile ? (showMenu ? " show" : "") : ""}`}>
+      <ul
+        ref={navRef}
+        className={`navbar-nav ms-auto${isMobile ? (showMenu ? " show" : "") : ""}`}
+        style={
+          isMobile
+            ? {
+                position: "absolute",
+                top: "100%",
+                left: 0,
+                right: 0,
+                background: "#000",
+                zIndex: 1000,
+                boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+              }
+            : {}
+        }
+      >
         <li className="nav-item">
           <Link className="nav-link gold-text" href="/">
             Skincare Routine
