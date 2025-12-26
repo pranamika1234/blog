@@ -24,11 +24,11 @@ export default function Products() {
 
       {/* Gallery Section */}
       <h3 className="gold-text text-center mt-5 mb-3"> Gold Skin Gallery</h3>
-      <div className="row g-3 justify-content-center">
+      <div className="row g-3 justify-content-center gallery-row">
         {[1,2,3,4,5].map(num => {
           const imgSrc = num === 1 ? '/goldskin.jfif' : `/goldskin${num}.jfif`;
           return (
-            <div className="col-6 col-sm-4 col-md-3 col-lg-2 mb-3" key={num}>
+            <div className="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 gallery-item" key={num}>
               <div className="card p-2 bg-black border-gold h-100 d-flex align-items-center justify-content-center">
                 <img
                   src={imgSrc}
