@@ -1,1 +1,4 @@
-This file is being deleted to resolve route conflict and element type error.
+// This file was removed to resolve route conflict and element type error.
+export default function About() {
+  return null;
+}
