@@ -32,7 +32,7 @@ export default function Navbar() {
         borderBottom: "1px solid #eee",
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "center",
         padding: "0 1rem",
       }}
     >
