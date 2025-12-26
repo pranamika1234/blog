@@ -24,8 +24,9 @@ export default function Navbar() {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 4000,
+        zIndex: 5000,
         width: "100vw",
+        minHeight: "56px",
         boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
       }}
     >
@@ -44,6 +45,8 @@ export default function Navbar() {
             fontWeight: "bold",
             fontSize: "1.3em",
             letterSpacing: "1px",
+            margin: 0,
+            padding: 0,
           }}
         >
           GOLD SKIN BEAUTY
@@ -55,7 +58,7 @@ export default function Navbar() {
             aria-label="Toggle navigation"
             style={{
               marginLeft: "auto",
-              zIndex: 4100,
+              zIndex: 5100,
               background: "none",
               border: "none",
               color: "#d4af37",
@@ -75,11 +78,13 @@ export default function Navbar() {
             left: 0,
             right: 0,
             background: "#000",
-            zIndex: 4001,
+            zIndex: 5001,
             boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
             padding: "1.5rem 0 1rem 0",
             borderTop: "1px solid #d4af37",
             width: "100vw",
+            height: "calc(100vh - 56px)",
+            overflowY: "auto",
           }}
         >
           <li className="nav-item">
