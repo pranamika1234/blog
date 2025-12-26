@@ -263,12 +263,12 @@
     width: 100vw;
     margin-left: 0;
     margin-right: 0;
-    padding-left: 0.5rem;
+    padding-left: 0 !important;
     padding-right: 0.5rem;
     box-sizing: border-box;
     scroll-snap-type: x mandatory;
+    scroll-padding-left: 16px !important;
   }
-    scroll-padding-left: 0 !important;
   .row.g-3.justify-content-center > .col-6,
   .row.g-3.justify-content-center > .col-6.col-sm-4,
   .row.g-3.justify-content-center > .col-6.col-sm-4.col-md-3.col-lg-2 {
