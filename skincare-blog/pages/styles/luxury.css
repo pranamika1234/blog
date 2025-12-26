@@ -13,17 +13,17 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     width: 100vw;
-    margin-left: -8vw;
-    margin-right: -8vw;
-    padding-left: 8vw;
-    padding-right: 8vw;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     box-sizing: border-box;
   }
   .row.g-3.justify-content-center > .col-6,
   .row.g-3.justify-content-center > .col-6.col-sm-4,
   .row.g-3.justify-content-center > .col-6.col-sm-4.col-md-3.col-lg-2 {
-    min-width: 70vw;
-    max-width: 70vw;
+    min-width: 80vw;
+    max-width: 80vw;
     flex: 0 0 auto;
     margin-bottom: 0;
   }

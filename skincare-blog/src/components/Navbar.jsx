@@ -1,10 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const navRef = useRef();
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 600);
@@ -13,28 +12,24 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  useEffect(() => {
-    if (showMenu && navRef.current) {
-      navRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [showMenu]);
-
   return (
     <nav className="navbar navbar-dark bg-black navbar-expand-lg px-4" style={{ position: "relative" }}>
-      <Link className="navbar-brand gold-text" href="/">
-        GOLD SKIN BEAUTY
-      </Link>
-      {isMobile && (
-        <button
-          className="navbar-toggle"
-          onClick={() => setShowMenu((v) => !v)}
-          aria-label="Toggle navigation"
-        >
-          &#9776;
-        </button>
-      )}
+      <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+        <Link className="navbar-brand gold-text" href="/">
+          GOLD SKIN BEAUTY
+        </Link>
+        {isMobile && (
+          <button
+            className="navbar-toggle"
+            onClick={() => setShowMenu((v) => !v)}
+            aria-label="Toggle navigation"
+            style={{ marginLeft: "auto" }}
+          >
+            &#9776;
+          </button>
+        )}
+      </div>
       <ul
-        ref={navRef}
         className={`navbar-nav ms-auto${isMobile ? (showMenu ? " show" : "") : ""}`}
         style={
           isMobile
@@ -46,8 +41,10 @@ export default function Navbar() {
                 background: "#000",
                 zIndex: 1000,
                 boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                display: showMenu ? "flex" : "none",
+                flexDirection: "column",
               }
-            : {}
+            : { display: "flex", flexDirection: "row", marginLeft: "auto" }
         }
       >
         <li className="nav-item">
