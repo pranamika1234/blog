@@ -347,12 +347,12 @@ p {
     overflow-x: auto;
     gap: 1rem;
     padding: 0 1rem 0.75rem;
-    margin: 0;
+    margin: 0 !important;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     justify-content: flex-start;
     scroll-padding-left: 1rem;
-    scroll-padding-right: 1.5rem;
+    scroll-padding-right: 1rem;
   }
   .row.g-3.justify-content-center > .col-6 {
     min-width: 70vw;
@@ -360,12 +360,15 @@ p {
     scroll-snap-align: start;
     padding-left: 0;
     padding-right: 0;
+    scroll-margin-left: 1rem;
   }
   .row.g-3.justify-content-center > .col-6:first-child {
     margin-left: 0;
+    scroll-margin-left: 1rem;
   }
   .row.g-3.justify-content-center > .col-6:last-child {
     margin-right: 1rem;
+    scroll-margin-right: 1rem;
   }
   h1,
   h2,
