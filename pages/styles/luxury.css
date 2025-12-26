@@ -350,14 +350,22 @@ p {
     margin: 0;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    scroll-padding-left: 1rem;
+    scroll-padding-right: 1.5rem;
   }
   .row.g-3.justify-content-center > .col-6 {
     min-width: 70vw;
     flex: 0 0 auto;
     scroll-snap-align: start;
+    padding-left: 0;
+    padding-right: 0;
   }
   .row.g-3.justify-content-center > .col-6:first-child {
     margin-left: 0;
+  }
+  .row.g-3.justify-content-center > .col-6:last-child {
+    margin-right: 1rem;
   }
   h1,
   h2,
