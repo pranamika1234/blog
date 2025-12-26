@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="section hero-bg text-center">
       <h1 className="display-4 gold-text">WANT YOUR SKIN GOLD? WE RECOMMEND YOU THIS.</h1>
-      <p className="mt-6 lead text-dark mx-auto">
+      <p className="hero-subtitle lead mx-auto">
         Discover premium skincare routines and hand-picked luxury beauty products.
       </p>
 

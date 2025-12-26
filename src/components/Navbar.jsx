@@ -1,159 +1,103 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
+const navigationItems = [
+  { href: "/", label: "Home" },
+  { href: "/About", label: "About" },
+  { href: "/Blog", label: "Blog" },
+  { href: "/SkincareRoutine", label: "Routine" },
+  { href: "/ProductsPage", label: "Products" },
+  { href: "/AffiliateDisclosure", label: "Affiliate" },
+  { href: "/PrivacyPolicy", label: "Privacy" },
+  { href: "/Contact", label: "Contact" },
+];
+
 export default function Navbar() {
-	const [showMenu, setShowMenu] = useState(false);
-	const [isMobile, setIsMobile] = useState(false);
-	const [mounted, setMounted] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-	useEffect(() => {
-		setMounted(true);
-		if (typeof window !== "undefined") {
-			const checkMobile = () => setIsMobile(window.innerWidth <= 600);
-			checkMobile();
-			window.addEventListener("resize", checkMobile);
-			return () => window.removeEventListener("resize", checkMobile);
-		}
-		return undefined;
-	}, []);
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+    const checkMobile = () => setIsMobile(window.innerWidth <= 900);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
-	useEffect(() => {
-		if (!isMobile) {
-			setShowMenu(false);
-		}
-	}, [isMobile]);
+  useEffect(() => {
+    if (!isMobile) {
+      setShowMenu(false);
+    }
+  }, [isMobile]);
 
-	if (!mounted) {
-		return null;
-	}
+  useEffect(() => {
+    if (typeof document === "undefined") {
+      return undefined;
+    }
+    document.body.classList.toggle("menu-open", showMenu);
+    document.body.style.overflow = showMenu ? "hidden" : "";
+    return () => {
+      document.body.classList.remove("menu-open");
+      document.body.style.overflow = "";
+    };
+  }, [showMenu]);
 
-	return (
-		<nav
-			className="navbar"
-			style={{
-				position: "fixed",
-				top: 0,
-				left: 0,
-				right: 0,
-				zIndex: 5000,
-				width: "100vw",
-				minHeight: "64px",
-				background: "#17b7e7",
-				borderBottom: "none",
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "space-between",
-				padding: "0 1rem",
-			}}
-		>
-			<Link
-				className="navbar-brand gold-text"
-				href="/"
-				style={{
-					fontWeight: "bold",
-					fontSize: "1.2em",
-					letterSpacing: "1px",
-					margin: 0,
-					padding: 0,
-					color: "#fff",
-				}}
-			>
-				GOLD SKIN BEAUTY
-			</Link>
-			{isMobile && (
-				<button
-					className="navbar-toggle"
-					onClick={() => setShowMenu(true)}
-					aria-label="Open menu"
-					style={{
-						background: "none",
-						border: "none",
-						color: "#fff",
-						fontSize: "2em",
-					}}
-				>
-					&#9776;
-				</button>
-			)}
-			{isMobile && showMenu && (
-				<div
-					className="mobile-menu"
-					style={{
-						position: "fixed",
-						top: 0,
-						left: 0,
-						width: "100vw",
-						height: "100vh",
-						background: "#fff",
-						zIndex: 6000,
-						display: "flex",
-						flexDirection: "column",
-						padding: 0,
-					}}
-				>
-					<div
-						style={{
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "space-between",
-							padding: "1.5rem 1.5rem 0 1.5rem",
-							borderBottom: "1px solid #eee",
-						}}
-					>
-						<span style={{ fontWeight: "bold", fontSize: "1.4em", color: "#222" }}>
-							Menu
-						</span>
-						<button
-							onClick={() => setShowMenu(false)}
-							aria-label="Close menu"
-							style={{
-								background: "none",
-								border: "none",
-								color: "#222",
-								fontSize: "2em",
-								fontWeight: "bold",
-								cursor: "pointer",
-							}}
-						>
-							&times;
-						</button>
-					</div>
-					<ul
-						style={{
-							listStyle: "none",
-							padding: 0,
-							margin: "2rem 0 0 0",
-							flex: 1,
-						}}
-					>
-						{[
-							{ href: "/", label: "HOME" },
-							{ href: "/shop-all", label: "SHOP ALL" },
-							{ href: "/skin-care", label: "SKIN CARE" },
-							{ href: "/shop-bundles", label: "SHOP BUNDLES" },
-							{ href: "/beauty-tools", label: "BEAUTY TOOLS" },
-							{ href: "/kids", label: "KIDS" },
-							{ href: "/oils", label: "OILS" },
-							{ href: "/soaps", label: "SOAPS" },
-						].map(({ href, label }) => (
-							<li
-								key={href}
-								style={{
-									fontWeight: "bold",
-									fontSize: "1.15em",
-									color: "#222",
-									padding: "1.2rem 1.5rem",
-									borderBottom: "1px solid #eee",
-								}}
-							>
-								<Link href={href} style={{ color: "#222", textDecoration: "none" }}>
-									{label}
-								</Link>
-							</li>
-						))}
-					</ul>
-				</div>
-			)}
-		</nav>
-	);
+  const menuLinks = useMemo(
+    () =>
+      navigationItems.map(({ href, label }) => (
+        <li className="mobile-menu__item" key={href}>
+          <Link
+            className="mobile-menu__link"
+            href={href}
+            onClick={() => setShowMenu(false)}
+          >
+            {label}
+          </Link>
+        </li>
+      )),
+    []
+  );
+
+  return (
+    <nav className="navbar main-navbar">
+      <Link className="navbar-brand main-navbar__brand" href="/">
+        GOLD SKIN BEAUTY
+      </Link>
+      <div className="main-navbar__links">
+        {navigationItems.map(({ href, label }) => (
+          <Link className="main-navbar__link" href={href} key={href}>
+            {label}
+          </Link>
+        ))}
+      </div>
+      <button
+        aria-controls="mobile-menu"
+        aria-expanded={showMenu}
+        aria-label="Toggle menu"
+        className="main-navbar__toggle"
+        onClick={() => setShowMenu(true)}
+        type="button"
+      >
+        &#9776;
+      </button>
+      {isMobile && showMenu ? (
+        <div className="mobile-menu" id="mobile-menu">
+          <div className="mobile-menu__header">
+            <span className="mobile-menu__title">Menu</span>
+            <button
+              aria-label="Close menu"
+              className="mobile-menu__close"
+              onClick={() => setShowMenu(false)}
+              type="button"
+            >
+              &times;
+            </button>
+          </div>
+          <ul className="mobile-menu__links">{menuLinks}</ul>
+        </div>
+      ) : null}
+    </nav>
+  );
 }
