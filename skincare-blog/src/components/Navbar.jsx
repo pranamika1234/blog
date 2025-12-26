@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="navbar navbar-dark bg-black"
+      className="navbar"
       style={{
         position: "fixed",
         top: 0,
@@ -26,12 +26,14 @@ export default function Navbar() {
         right: 0,
         zIndex: 5000,
         width: "100vw",
-        minHeight: "56px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+        minHeight: "64px",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+        background: "#fff",
+        borderBottom: "1px solid #eee",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
-        padding: 0,
+        justifyContent: "space-between",
+        padding: "0 1rem",
       }}
     >
       <div
@@ -50,7 +52,7 @@ export default function Navbar() {
             aria-label="Toggle navigation"
             style={{
               position: "absolute",
-              left: 16,
+              left: 0,
               background: "none",
               border: "none",
               color: "#d4af37",
@@ -66,31 +68,51 @@ export default function Navbar() {
           href="/"
           style={{
             fontWeight: "bold",
-            fontSize: "1.3em",
+            fontSize: "1.2em",
             letterSpacing: "1px",
             margin: 0,
             padding: 0,
             textAlign: "center",
+            color: "#222",
           }}
         >
           GOLD SKIN BEAUTY
         </Link>
+        {isMobile && (
+          <button
+            className="navbar-toggle"
+            aria-label="Search"
+            style={{
+              position: "absolute",
+              right: 0,
+              background: "none",
+              border: "none",
+              color: "#d4af37",
+              fontSize: "1.7em",
+              zIndex: 5100,
+            }}
+          >
+            <span role="img" aria-label="search">
+              🔍
+            </span>
+          </button>
+        )}
       </div>
       {isMobile && showMenu && (
         <ul
           className="navbar-nav show"
           style={{
             position: "fixed",
-            top: "56px",
+            top: "64px",
             left: 0,
             right: 0,
-            background: "#000",
+            background: "#fff",
             zIndex: 5001,
-            boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
             padding: "1.5rem 0 1rem 0",
-            borderTop: "1px solid #d4af37",
+            borderTop: "1px solid #eee",
             width: "100vw",
-            height: "calc(100vh - 56px)",
+            height: "calc(100vh - 64px)",
             overflowY: "auto",
             textAlign: "center",
           }}
