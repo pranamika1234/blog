@@ -73,83 +73,63 @@ export default function Navbar() {
             left: 0,
             width: "100vw",
             height: "100vh",
-            background: "#17b7e7",
+            background: "#fff",
             zIndex: 6000,
             display: "flex",
             flexDirection: "column",
-            padding: "2rem 0 0 0",
+            padding: 0,
           }}
         >
-          <button
-            onClick={() => setShowMenu(false)}
-            aria-label="Close menu"
-            style={{
-              position: "absolute",
-              top: 24,
-              right: 24,
-              background: "none",
-              border: "none",
-              color: "#fff",
-              fontSize: "2.5em",
-            }}
-          >
-            &times;
-          </button>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1.5rem 1.5rem 0 1.5rem", borderBottom: "1px solid #eee" }}>
+            <span style={{ fontWeight: "bold", fontSize: "1.4em", color: "#222" }}>Menu</span>
+            <button
+              onClick={() => setShowMenu(false)}
+              aria-label="Close menu"
+              style={{
+                background: "none",
+                border: "none",
+                color: "#222",
+                fontSize: "2em",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              &times;
+            </button>
+          </div>
           <ul
             style={{
               listStyle: "none",
               padding: 0,
-              margin: "4rem 0 0 2rem",
+              margin: "2rem 0 0 0",
               flex: 1,
             }}
           >
-            <li style={{ marginBottom: "2rem", fontSize: "1.3em" }}>
-              <Link
-                href="/"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                Home
-              </Link>
+            <li style={{ fontWeight: "bold", fontSize: "1.15em", color: "#222", padding: "1.2rem 1.5rem", borderBottom: "1px solid #eee" }}>
+              <Link href="/" style={{ color: "#222", textDecoration: "none" }}>HOME</Link>
             </li>
-            <li style={{ marginBottom: "2rem", fontSize: "1.3em" }}>
-              <Link
-                href="/Blog"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                Blog Tutorial
-              </Link>
+            <li style={{ fontWeight: "bold", fontSize: "1.15em", color: "#222", padding: "1.2rem 1.5rem", borderBottom: "1px solid #eee" }}>
+              <Link href="/shop-all" style={{ color: "#222", textDecoration: "none" }}>SHOP ALL</Link>
             </li>
-            <li style={{ marginBottom: "2rem", fontSize: "1.3em" }}>
-              <Link
-                href="/About"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                About Me
-              </Link>
+            <li style={{ fontWeight: "bold", fontSize: "1.15em", color: "#222", padding: "1.2rem 1.5rem", borderBottom: "1px solid #eee" }}>
+              <Link href="/skin-care" style={{ color: "#222", textDecoration: "none" }}>SKIN CARE</Link>
             </li>
-            <li style={{ marginBottom: "2rem", fontSize: "1.3em" }}>
-              <Link
-                href="/Contact"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                Contact Me
-              </Link>
+            <li style={{ fontWeight: "bold", fontSize: "1.15em", color: "#222", padding: "1.2rem 1.5rem", borderBottom: "1px solid #eee" }}>
+              <Link href="/shop-bundles" style={{ color: "#222", textDecoration: "none" }}>SHOP BUNDLES</Link>
+            </li>
+            <li style={{ fontWeight: "bold", fontSize: "1.15em", color: "#222", padding: "1.2rem 1.5rem", borderBottom: "1px solid #eee" }}>
+              <Link href="/beauty-tools" style={{ color: "#222", textDecoration: "none" }}>BEAUTY TOOLS</Link>
+            </li>
+            <li style={{ fontWeight: "bold", fontSize: "1.15em", color: "#222", padding: "1.2rem 1.5rem", borderBottom: "1px solid #eee" }}>
+              <Link href="/kids" style={{ color: "#222", textDecoration: "none" }}>KIDS</Link>
+            </li>
+            <li style={{ fontWeight: "bold", fontSize: "1.15em", color: "#222", padding: "1.2rem 1.5rem", borderBottom: "1px solid #eee" }}>
+              <Link href="/oils" style={{ color: "#222", textDecoration: "none" }}>OILS</Link>
+            </li>
+            <li style={{ fontWeight: "bold", fontSize: "1.15em", color: "#222", padding: "1.2rem 1.5rem", borderBottom: "1px solid #eee" }}>
+              <Link href="/soaps" style={{ color: "#222", textDecoration: "none" }}>SOAPS</Link>
             </li>
           </ul>
-          <div style={{ padding: "0 2rem 2rem 2rem" }}>
-            <input
-              type="text"
-              placeholder="Search"
-              style={{
-                width: "100%",
-                padding: "0.75rem 1rem",
-                borderRadius: "2rem",
-                border: "none",
-                fontSize: "1.2em",
-                outline: "none",
-              }}
-            />
-          </div>
         </div>
       )}
     </nav>
