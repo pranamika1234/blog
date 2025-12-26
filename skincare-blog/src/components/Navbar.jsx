@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="navbar navbar-dark bg-black navbar-expand-lg px-4"
+      className="navbar navbar-dark bg-black"
       style={{
         position: "fixed",
         top: 0,
@@ -28,6 +28,10 @@ export default function Navbar() {
         width: "100vw",
         minHeight: "56px",
         boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 0,
       }}
     >
       <div
@@ -35,9 +39,28 @@ export default function Navbar() {
           display: "flex",
           alignItems: "center",
           width: "100%",
-          justifyContent: "space-between",
+          justifyContent: "center",
+          position: "relative",
         }}
       >
+        {isMobile && (
+          <button
+            className="navbar-toggle"
+            onClick={() => setShowMenu((v) => !v)}
+            aria-label="Toggle navigation"
+            style={{
+              position: "absolute",
+              left: 16,
+              background: "none",
+              border: "none",
+              color: "#d4af37",
+              fontSize: "2em",
+              zIndex: 5100,
+            }}
+          >
+            &#9776;
+          </button>
+        )}
         <Link
           className="navbar-brand gold-text"
           href="/"
@@ -47,27 +70,11 @@ export default function Navbar() {
             letterSpacing: "1px",
             margin: 0,
             padding: 0,
+            textAlign: "center",
           }}
         >
           GOLD SKIN BEAUTY
         </Link>
-        {isMobile && (
-          <button
-            className="navbar-toggle"
-            onClick={() => setShowMenu((v) => !v)}
-            aria-label="Toggle navigation"
-            style={{
-              marginLeft: "auto",
-              zIndex: 5100,
-              background: "none",
-              border: "none",
-              color: "#d4af37",
-              fontSize: "2em",
-            }}
-          >
-            &#9776;
-          </button>
-        )}
       </div>
       {isMobile && showMenu && (
         <ul
@@ -85,6 +92,7 @@ export default function Navbar() {
             width: "100vw",
             height: "calc(100vh - 56px)",
             overflowY: "auto",
+            textAlign: "center",
           }}
         >
           <li className="nav-item">
