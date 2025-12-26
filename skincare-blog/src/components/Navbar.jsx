@@ -1,13 +1,32 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
+  const [showMenu, setShowMenu] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 600);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <nav className="navbar navbar-dark bg-black navbar-expand-lg px-4">
+    <nav className="navbar navbar-dark bg-black navbar-expand-lg px-4" style={{ position: "relative" }}>
       <Link className="navbar-brand gold-text" href="/">
         GOLD SKIN BEAUTY
       </Link>
-
-      <ul className="navbar-nav ms-auto">
+      {isMobile && (
+        <button
+          className="navbar-toggle"
+          onClick={() => setShowMenu((v) => !v)}
+          aria-label="Toggle navigation"
+        >
+          &#9776;
+        </button>
+      )}
+      <ul className={`navbar-nav ms-auto${isMobile ? (showMenu ? " show" : "") : ""}`}>
         <li className="nav-item">
           <Link className="nav-link gold-text" href="/">
             Skincare Routine
@@ -23,7 +42,6 @@ export default function Navbar() {
             Blog
           </Link>
         </li>
-
         <li className="nav-item">
           <Link className="nav-link gold-text" href="/About">
             About
