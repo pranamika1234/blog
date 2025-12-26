@@ -1,10 +1,14 @@
 import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
+import { resolveComponent } from "../src/utils/resolveComponent";
 
 export default function About() {
+  const NavbarComponent = resolveComponent(Navbar);
+  const FooterComponent = resolveComponent(Footer);
+
   return (
     <>
-      <Navbar />
+      {NavbarComponent ? <NavbarComponent /> : null}
       <section className="section container">
         <h1 className="gold-text">About Gold Skin Beauty</h1>
         <p>
@@ -33,7 +37,7 @@ export default function About() {
           use cookies to display relevant ads.
         </p>
       </section>
-      <Footer />
+      {FooterComponent ? <FooterComponent /> : null}
     </>
   );
 }
