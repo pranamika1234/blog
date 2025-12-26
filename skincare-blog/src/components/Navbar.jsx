@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-
-
-
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -11,13 +8,9 @@ export default function Navbar() {
 
   useEffect(() => {
     setMounted(true);
-    function checkMobile() {
-      if (typeof window !== "undefined") {
-        setIsMobile(window.innerWidth <= 600);
-      }
-    }
-    checkMobile();
     if (typeof window !== "undefined") {
+      const checkMobile = () => setIsMobile(window.innerWidth <= 600);
+      checkMobile();
       window.addEventListener("resize", checkMobile);
       return () => window.removeEventListener("resize", checkMobile);
     }
@@ -27,7 +20,7 @@ export default function Navbar() {
     if (!isMobile) setShowMenu(false);
   }, [isMobile]);
 
-  if (!mounted) return null;
+  if (!mounted) return null; // Prevent SSR from rendering anything
 
   return (
     <nav
