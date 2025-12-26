@@ -2,20 +2,23 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 
+
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
     setMounted(true);
     if (typeof window !== "undefined") {
-      const checkMobile = () => setIsMobile(window.innerWidth <= 600);
-      checkMobile();
-      window.addEventListener("resize", checkMobile);
-      return () => window.removeEventListener("resize", checkMobile);
+      setWindowWidth(window.innerWidth);
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
   }, []);
+
+  const isMobile = windowWidth <= 600;
 
   useEffect(() => {
     if (!isMobile) setShowMenu(false);
