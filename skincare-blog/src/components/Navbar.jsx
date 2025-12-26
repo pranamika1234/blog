@@ -12,6 +12,10 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  useEffect(() => {
+    if (!isMobile) setShowMenu(false);
+  }, [isMobile]);
+
   return (
     <nav className="navbar navbar-dark bg-black navbar-expand-lg px-4">
       <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
@@ -23,7 +27,7 @@ export default function Navbar() {
             className="navbar-toggle"
             onClick={() => setShowMenu((v) => !v)}
             aria-label="Toggle navigation"
-            style={{ marginLeft: "auto" }}
+            style={{ marginLeft: "auto", zIndex: 3100 }}
           >
             &#9776;
           </button>
