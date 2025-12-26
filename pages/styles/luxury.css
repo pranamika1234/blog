@@ -96,7 +96,7 @@ a:hover {
   font-weight: 800;
   font-size: clamp(1.05rem, 2.4vw, 1.35rem);
   letter-spacing: 0.16em;
-  color: #fff;
+  color: var(--gold);
   text-transform: uppercase;
 }
 
@@ -110,12 +110,12 @@ a:hover {
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: #fff;
+  color: var(--gold);
   text-transform: uppercase;
 }
 
 .main-navbar__link:hover {
-  color: #fdfdfd;
+  color: #f6da83;
 }
 
 .main-navbar__toggle {
@@ -434,6 +434,9 @@ p {
   }
   .main-navbar__toggle {
     display: inline-flex;
+  }
+  .main-navbar__brand {
+    color: #fff;
   }
   .hero-bg {
     padding: clamp(110px, 28vw, 180px) clamp(18px, 10vw, 46px) clamp(70px, 20vw, 140px);
